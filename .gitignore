@@ -1,0 +1,29 @@
+# Local and deployment secrets
+.env
+.env.*
+functions/.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Firebase local caches
+.firebase/
+.firebaserc
+
+# Node
+node_modules/
+functions/node_modules/
+
+# VS Code internals
+.vscode/
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Large source media (not needed in repo)
+*.mp4
+*.jpg

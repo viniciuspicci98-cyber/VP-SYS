@@ -1,0 +1,43 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Regras temporárias para desenvolvimento/teste
+    // IMPORTANTE: Restringir antes de ir para produção!
+    
+    // Regras para coleção de equipamentos/ordens de serviço
+    match /sistema_lifesul/{docId} {
+      allow read, write: if true;  // Temporário para testes
+    }
+    
+    // Regras para coleção de clientes
+    match /clientes/{clienteId} {
+      allow read, write: if true;  // Temporário para testes
+    }
+    
+    // Regras para insights preditivos
+    match /insights_preditivos/{docId} {
+      allow read, write: if true;  // Temporário para testes
+    }
+    
+    // Regras para peças/cadastro
+    match /pecas/{docId} {
+      allow read, write: if true;  // Temporário para testes
+    }
+
+    // Regras para conversas do Relatório IA
+    match /conversas/{conversaId} {
+      // Compatibilidade com o fluxo atual do app (inclui login manual fallback)
+      // Em produção, ideal restringir por request.auth + userId.
+      allow read, write: if true;
+
+      match /mensagens/{mensagemId} {
+        allow read, write: if true;
+      }
+    }
+
+    // Regras para leads do CRM
+    match /leads/{leadId} {
+      allow read, write: if true;  // Temporário para testes
+    }
+  }
+}
